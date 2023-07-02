@@ -1,0 +1,21 @@
+<header class="bg-light">
+    <nav class="navbar navbar-light">
+        <a class="navbar-brand" (click)="goHome()" style="cursor: pointer;">
+          <img src="../../../../../../assets/img/store-logo.png" width="30" height="30" alt="">
+          Web Store
+        </a>
+
+        <div class="text-end" *ngIf="!this.isLogged">
+          <button type="button" class="btn btn-warning" (click)="redirectToLogin()">Login</button>
+        </div>
+        <div class="text-end" *ngIf="this.isLogged">
+          <button type="button" class="btn btn-warning" (click)="logOut()">Logout</button>
+          <button *ngIf="this.CartCount > 0 && this.clientType.CLIENT === this.clientRole" type="button" class="btn btn-warning" (click)="redirectToCart()">Carrito ({{this.CartCount}})</button>
+          <button *ngIf="this.clientType.ADMIN === this.clientRole" type="button" class="btn btn-warning" (click)="redirectToStores()">Tiendas</button>
+        </div>
+
+      </nav>
+</header>
+<main>
+    <router-outlet></router-outlet>
+</main>

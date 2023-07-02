@@ -1,0 +1,43 @@
+
+  <mat-card>
+    <button class="btn btn-primary" (click)="goToAdd()">Registrar tienda</button>
+  </mat-card>
+  <!-- TABLA TIENDAS -->
+  <mat-card>
+    <div class="table-responsive">
+      <table class="full-wid" mat-table [dataSource]="dataSource">
+  
+        <ng-container matColumnDef="BranchName">
+          <th mat-header-cell *matHeaderCellDef>Nombre de sucursal</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.branchName | titlecase}}</div></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="Address">
+          <th mat-header-cell *matHeaderCellDef>Dirección</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.address | titlecase}} </div></td>
+        </ng-container>
+
+  
+        <ng-container  matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element;">
+            <button class="btn btn-secondary" (click)="goToArticles(element)" style="margin-right: 10px;">Ver articulos</button>
+            <button class="btn btn-success" (click)="update(element)" style="margin-right: 10px;">Actualizar</button>
+            <button class="btn btn-danger" (click)="delete(element)">Eliminar</button>
+
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div class="pagination">
+      <mat-paginator [length]="totalItems"
+                     [pageSize]="size"
+                     [pageIndex]="index"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </mat-card>

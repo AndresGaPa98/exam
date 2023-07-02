@@ -1,0 +1,33 @@
+
+<mat-card>
+    <mat-card-header>
+        <h2>Actualizar articulo</h2>
+    </mat-card-header>
+    <mat-card-content *ngIf="this.data != undefined">
+        <div>
+            <p>Código</p>
+            <input style="width: 100%;" type="text" [(ngModel)]="data.article.code">
+        </div>
+        <div>
+            <p>Descripción</p>
+            <input style="width: 100%;" type="text" [(ngModel)]="data.article.description">
+        </div>
+        <div>
+            <p>precio</p>
+            <input style="width: 100%;" type="number" [(ngModel)]="data.article.price">
+        </div>
+        <div>
+            <p>Stock</p>
+            <input style="width: 100%;" type="number" [(ngModel)]="data.article.stock">
+        </div>
+        <div>
+            <p>Imagen Url</p>
+            <input style="width: 100%;" type="text" [(ngModel)]="data.article.urlImage">
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-success" (click)="update()" style="margin-right: 10px;">Actualizar</button>
+            <button class="btn btn-light" (click)="returnToStoresCatalog()">Cancelar</button>
+        </div>
+    </mat-card-content>
+  </mat-card>

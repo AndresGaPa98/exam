@@ -1,0 +1,58 @@
+
+<mat-card>
+    <button class="btn btn-primary" (click)="goToAdd()">Registrar articulo</button>
+  </mat-card>
+  <!-- TABLA TIENDAS -->
+  <mat-card>
+    <div class="table-responsive">
+      <table class="full-wid" mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="urlImage">
+          <th mat-header-cell *matHeaderCellDef>Imagen</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">
+            <img [src]="element.article.urlImage" alt="element.article.description" width="50" height="50">  
+          </div></td>
+        </ng-container>
+
+        <ng-container matColumnDef="code">
+          <th mat-header-cell *matHeaderCellDef>Código</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.article.code | titlecase}}</div></td>
+        </ng-container>
+  
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Descripción</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.article.description | titlecase}} </div></td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Precio</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.article.price | currency}}</div></td>
+        </ng-container>
+  
+        
+        <ng-container matColumnDef="stock">
+          <th mat-header-cell *matHeaderCellDef>Stock</th>
+          <td mat-cell *matCellDef="let element"><div class="mrgn-b-xs">{{element.article.stock}}</div></td>
+        </ng-container>
+  
+        <ng-container  matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef>Acciones</th>
+          <td mat-cell *matCellDef="let element;">
+            <button class="btn btn-success" (click)="update(element)" style="margin-right: 10px;">Actualizar</button>
+            <button class="btn btn-danger" (click)="delete(element)">Eliminar</button>
+
+          </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+    <div class="pagination">
+      <mat-paginator [length]="totalItems"
+                     [pageSize]="size"
+                     [pageIndex]="index"
+                     [pageSizeOptions]="[5, 10, 25, 100]"
+                     (page)="onPageChange($event)">
+      </mat-paginator>
+    </div>
+  </mat-card>

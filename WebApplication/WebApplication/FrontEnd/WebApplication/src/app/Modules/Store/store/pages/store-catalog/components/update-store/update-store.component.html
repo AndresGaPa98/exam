@@ -1,0 +1,21 @@
+
+  <mat-card>
+    <mat-card-header>
+        <h2>Actualizar tienda</h2>
+    </mat-card-header>
+    <mat-card-content *ngIf="this.data != undefined">
+        <div>
+            <p>Nombre de sucursal</p>
+            <input style="width: 100%;" type="text" [(ngModel)]="data.branchName">
+        </div>
+        <div>
+            <p>Dirección</p>
+            <input style="width: 100%;" type="text" [(ngModel)]="data.address">
+        </div>
+        <br>
+        <div>
+            <button class="btn btn-success" (click)="update()" style="margin-right: 10px;">Actualizar</button>
+            <button class="btn btn-light" (click)="returnToStoresCatalog()">Cancelar</button>
+        </div>
+    </mat-card-content>
+  </mat-card>
