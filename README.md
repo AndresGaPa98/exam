@@ -1,5 +1,5 @@
 # exam
-Prueba técnica SoloTalento
+Ejemplo basico de agregar productos a carrito
 
 #Como ejecutar el proyecto de angular
 
